@@ -1,0 +1,7 @@
+Building.
+
+Building sipcalc is as simple as:
+./configure
+make
+make install
+

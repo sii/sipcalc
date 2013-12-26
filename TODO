@@ -1,0 +1,13 @@
+* Use more OS-specific ways to retrieve interface information so that we
+  can also parse interfaces that aren't handled by the struct ifreq stuff.
+  We probably need this to handle ipv6 interface address information which
+  doesn't work today.
+
+* IPv6 name resolution is untested on Solaris due to lack of a machine to
+  try this on. I'd love to hear from anyone that trys this.
+
+* Same as above for MacOSX.
+
+* Make validate_v4addr, validate_v6addr and validate netmask use the same
+  returncodes.
+

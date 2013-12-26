@@ -1,0 +1,214 @@
+Syntax: sipcalc [OPTIONS]... <[ADDRESS]... [INTERFACE]... | [-]>
+
+Description of common output:
+
+IPv4 -
+  Host address		- The given host address.
+  Network address	- The first address in a given range, unusable for
+			  hosts under normal conditions.
+  Network mask		- The network mask (netmask) used to specify the size
+			  of a given subnet, usually represented in three
+			  different formats:
+			  dotted quad (xxx.xxx.xxx.xxx)
+			  hex (0xnnnnnnnn)
+			  bits (/n where n >= 0 <= 32)
+  Broadcast address	- The broadcast address of a given subnet, usually
+			  the last address in a range.
+  Cisco wildcard	- The inverted value of the netmask
+			  (netmask ^ 0xffffffff).
+			  This value is commonly used in for example access-
+			  lists on routers.
+  Addresses in network	- The number of addresses in the given subnet.
+  Network range		- The full subnet range.
+  Usable range		- The range in the given subnet that is commonly used
+			  for normal hosts.
+
+IPv6 -
+  Expanded Address	- The full expanded IPv6 address.
+  Compressed address	- The IPv6 address compressed in the most efficient way
+			  possible.
+  Subnet prefix		- The prefix of the address (in relation to the
+			  netmask), the suffix of the address is zeroed out.
+  Address ID		- The suffix of the address (in relation to the
+			  netmask), the prefix of the address is zeroed out.
+  Prefix address	- The IPv6 equivalent of the IPv4 netmask.
+  Prefix length		- Number of bits set in the netmask.
+  Address type		- The address type as defined in RFC2373.
+  Comment		- Some addresses will have comments from the author :)
+  Network range		- The start and end addresses of the subnet.
+  Expanded v4inv6 address - The full expanded IPv6 address in v4inv6 format.
+  Compr. v4inv6 address	- The compressed IPv6 address in v4inv6 format.
+  Reverse DNS		- The address in IPv6 reverse DNS form.
+
+
+Commandline options:
+[OPTIONS]...
+
+* -a, --all
+  Give all possible information about an adress or interface, this is
+  equivalent to giving the flags -b -c -i -n 0 for IPv4 and
+  -e -r -t for IPv6.
+
+* -b, --cidr-bitmap (IPv4)
+  Show a CIDR based bitmap of the following output:
+  - host address
+  - network address
+  - network mask
+  - broadcast address
+  - cisco wildcard
+  - network range
+  - usable range
+
+* -c, --classfull-addr (IPv4)
+  Show classfull address information for the following values:
+  - host address
+  - host address (decimal)
+  - host address (hex)
+  - network address
+  - network class
+  - network mask
+  - network mask (hex)
+  - broadcast address
+
+* -d, --resolv
+  Enable DNS resolution of commandline hostnames, both IPv4 and IPv6 support
+  if present.
+
+* -e, --v4inv6 (IPv6)
+  v4inv6 output for the following values:
+  - Expanded v4inv6 address
+  - Compr. v4inv6 address
+  - Comment
+
+* -h, --help
+  Display the commandline help.
+
+* -i, --cidr-addr (the default commandline option for IPv4) (IPv4)
+  Show CIDR address information for the following values:
+  - host address
+  - host address (decimal)
+  - host address (hex)
+  - network address
+  - network mask
+  - network mask (bits)
+  - network mask (hex)
+  - Broadcast address
+  - cisco wildcard
+  - addresses in network
+  - network range
+  - usable range
+
+* -I, --addr-int=INT
+  Explicitly add an interface.
+  This can be used to circumvent the sipcalc "smart parsing" of addresses/
+  interfaces on the commandline. This can be useful if you for example
+  for some reason have an interface with the same name as an actual
+  address, eg. 127.0.0.1 or ::1 etc.
+  See also: -4 -6.
+
+* -n, --subnets=NUM
+  Display NUM extra subnets (starting from the current subnet). Will display
+  all subnets in the current /24 if NUM is 0.
+
+* -r, --v6rev (IPv6)
+  IPv6 reverse DNS output for the following values:
+  - Reverse DNS
+
+* -s, --v4split=MASK (IPv4)
+  Split the current network into subnets of MASK size. MASK can be given in
+  dotted quad, hex or CIDR form, either with or without the '/' character.
+
+* -S, --v6split=MASK (IPv6)
+  Split the current network into subnets of MASK size. MASK must be given in
+  CIDR form, either with or with the '/' character.
+
+* -t, --v6-standard (IPv6)
+  Default IPv6 output containing the following values:
+  - Expanded Address
+  - Compressed address
+  - Subnet prefix (masked)
+  - Address ID (masked)
+  - Prefix address
+  - Prefix length
+  - Address type
+  - Network range
+
+* -u --split-verbose
+  This will put network splitting into verbose mode.
+  This means that all the subnets generated when splitting a network will
+  be passed back to sipcalc for explicit parsing giving the same output
+  as if the address had been given on the commandline.
+  All options passed to sipcalc on the commandline will also be inherited
+  when the subnet is passed back to sipcalc for parsing, with one exception,
+  the -s/-S flag, we don't want an endless loop.
+  Sending only the -s/-S and -u flags to sipcalc will give the default output
+  (-i for ipv4 and -t for ipv6).
+
+* -v, --version
+  Display sipcalc version.
+
+* -w, --wildcard
+  Takes a cisco wildcard (inverse mask) and display the corresponding regular
+  netmask and netmask bit count.
+
+* -x, --classful-bitmap (IPv4)
+  Show a classfull bitmap of the following output:
+  - network address
+  - network mask
+
+* -4, --addr-ipv4=ADDR
+  Explicitly add an IPv4 address.
+  See also: -I -6.
+
+* -6, --addr-ipv6=ADDR
+  Explicitly add an IPv6 address.
+  See also: -I -4.
+
+
+<[ADDRESS]... [INTERFACE]... | [-]>
+
+* address
+IPv4 -
+  Address must be given in the "standard" dotted quad format, ie.:
+  xxx.xxx.xxx.xxx and prepended with a netmask the can be given in
+  three different ways:
+  - CIDR, ex. /n where n >= 0 <= 32.
+  - Dotted quad, ex. xxx.xxx.xxx.xxx.
+  - A hex value, ex 0xnnnnnnnn or nnnnnnnn.
+
+IPv6 -
+  Addresses may be given in any of the forms defined in RFC2373, the netmask
+  must be given in CIDR notion.
+  Valid values for the netmask range from n >= 0 <= 128, default value if
+  netmask is omitted is 128.
+  Examples:
+  - 1:2:3:4:5:6:7:8
+  - 1:2:3:4:5:6:7:8/64
+  - ::1/64
+  - ::1.2.3.4/64
+  etc.
+
+* interface
+  Instead of taking address information from the commandline sipcalc
+  can  obtain relevant information by looking at a specified interface
+  on the system. Sipcalc then uses this information to calculate output
+  values.
+  This option currently only works for IPv4 addresses, work is being done
+  to support IPv6 here also.
+
+* -
+  Further arguments will be read from stdin, this can be useful for example
+  for cat(1)'ing a list of addresses stored in a file to sipcalc.
+
+
+Related documents:
+
+RFC 1878: Variable Length Subnet Table For IPv4.
+RFC 1517: Applicability Statement for the Implementation of CIDR.
+RFC 1518: An Architecture for IP Address Allocation with CIDR.
+RFC 1519: CIDR: An Address Assignment and Aggregation Strategy.
+RFC 1520: Exchanging Routing Information Across Provider Boundaries
+	  in the CIDR Environment.
+RFC 2373: IP Version 6 Addressing Architecture.
+RFC 2374: An IPv6 Aggregatable Global Unicast Address Format.
+

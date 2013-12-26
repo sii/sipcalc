@@ -1,0 +1,118 @@
+Mon Jan 14 19:39:00 CET 2013
+  * Fix multiple buffer overflows. Patch from Jaromir Capik.
+  * Fix multiple spelling errors. Suggestions from Ross Richardson.
+  * Version 1.1.6
+
+Mon Jul 20 22:38:14 CET 2009
+  * Compilation fix for GCC 4.4, patch from Artem Zolochevskiy.
+  * Compilation fix Sun Studio 11 on Solaris 8 x86, patch from Ian Dickinson.
+  * Version 1.1.5
+
+Fri Nov 10 11:05:06 CET 2006
+  * Fixed a bunch of compiler warnings when compiling with -Wall.
+    Thanks to the sipcalc Debian package maintainer Adriaan Peeters
+    for the heads up.
+  * Version 1.1.4
+
+Wed Nov  2 10:03:00 CET 2005
+  * Fixed typos in sipcalc man page, thanks to A Costa <agcosta@gis.net>
+    for patch.
+  * Added -w ipv4 option to display some inverse mask information.
+
+Wed Mar 19 13:27:32 CET 2003
+  * Changed stuff around to be compatible with newer version of autoconf.
+  * Updated ipv6 reverse dns output to use the domain ip6.arpa instead of
+    ip6.int, thanks to Måns Nilsson for bringing this to my attention.
+  * Change license from GPL to BSD, see COPYING for details.
+  * Version 1.1.2
+
+Fri May 24 23:05:42 CEST 2002
+  * Removed web (cgi) support for now.
+  * Version 1.1.1
+
+Tue Apr 16 23:03:23 CEST 2002
+  * Some minor bugfixing.
+  * Verified MacOSX support, no ipv6 dns resolution though.
+  * Version 1.1.1-pre2
+
+Mon Apr  8 20:18:24 CEST 2002
+  * Rewrote much of the argument handling.
+  * Rewrote much of the DNS parsing.
+  * Multiple addresses for a resolved host are now supported,
+    both with ipv4 and ipv6.
+  * DNS resolution now works with stdin parsing.
+  * Version 1.1.1-pre1
+
+Thu Apr  4 23:01:30 CEST 2002
+  * Fixed improper parsing of subnetmask in some cases where dns resolution
+    and the -4 argument was used.
+
+Mon Mar 11 14:22:15 CET 2002
+  * Version 1.1.0
+  * See NEWS for details.
+
+Sat Mar  9 21:47:34 CET 2002
+  * Added use of dns resolution.
+  * Version 1.1.0-pre4
+
+Sun Jan 13 20:25:09 CET 2002
+  * Fixed sipcalc cgi-script.
+  * Multiple other minor fixes.
+  * Version 1.1.0-pre1
+
+Fri Jan  4 02:00:45 CET 2002
+  * Added preliminary IPv6 support, functionallity so far is basic IPv6
+    info, v4inv6 info and split network functions.
+  * Version 1.0.4-pre1
+
+Thu Dec 13 23:13:01 CET 2001
+  * Finally added a manpage.
+  * Several minor changes to documentation
+  * Version 1.0.3
+
+Fri Jul 13 22:12:06 CEST 2001
+  * Some minor cosmetic changes.
+  * Added split-network to sipcalc-www.
+  * Split-network commandline parsing bugfixes.
+  * Version 1.0.2
+  This should really be good enough for a stable release, though
+  sipcalc-www needs more cleaning.
+
+Fri Jun 29 19:32:50 CEST 2001
+  * Lots of Solaris compile fixes (u_int32_t, libsocket, SIOCGIFADDR ...),
+    sipcalc compiles fine on Solaris now.
+  * Fixed getopt_long support for freebsd.
+  * Interface detection was broken on Linux-alpha due to one of the unions
+    in struct ifreq being larger on 64bit then 32bit architectures.
+    Should now hopefully be fixed in a completely portable manner.
+  * Lots of minor fixes for multiple architectures (made good use of the
+    sourceforge compile farm).
+  * Version 1.0.2b7
+
+Sun May 13 23:37:09 CEST 2001
+  * Build process now uses configure.
+  * Version 1.0.2b1
+
+Thu May 10 19:40:27 CEST 2001
+  * Support for stdin parsing complete.
+  * Multiple addresses/interfaces on commandline supported.
+  * Changed to getopt for argument handling.
+
+Sat May  5 01:09:19 CEST 2001
+  * The interface code now (hopefully) handles interfaces with multiple
+    addresses correctly.
+
+Wed May  2 18:38:56 CEST 2001
+  * Changed to u_int32_t for extra portability, this also fixed support for
+    alpha (tru64).
+  * Version 1.0.1
+
+Sat Mar  3 00:07:59 CEST 2001
+  * Added support for "reverse engineering" of interfaces.
+
+Thu Feb 18 20:35:49 CEST 2001
+  * First commit of web (cgi) support.
+
+Wed Feb 10 16:55:14 CEST 2001
+  * Initial commit.
+

@@ -1,0 +1,11 @@
+* News in version 1.1.1
+sipcalc-www has been removed, some README for further details.
+
+
+* News in version 1.1.1[-pre-x].
+
+Bugfixes.
+Support for multiple returned records while doing dns resolution.
+Verified MacOSX support.
+Fixed the stdin parsing.
+
