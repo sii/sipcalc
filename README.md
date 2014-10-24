@@ -1,11 +1,12 @@
-Sipcalc is an "advanced" console based ip subnet calculator.
+Sipcalc is an console based ip subnet calculator with IPv4 and IPv6 support.
 
-** NOTE **
-Sipcalc is not really under active development, but if problems are
-encountered I will do what I can to fix them and put out a new release.
+Sipcalc development started back in 2001 and has most of the features I want
+in an ip calculator. It is no longer under active development, though bugfixes
+and patches are accepted.
 
-Sipcalc was created in 2001, it has the features I want in an ip calculator.
-**
+Sipcalc is available in many Linux/BSD distributions, usually as a package named sipcalc. Release tarballs are available from http://www.routemeister.net/
+
+--
 
 Features include:
 - IPv4
