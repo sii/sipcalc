@@ -854,7 +854,7 @@ main (int argc, char *argv[])
 	}
 
 	if (!v4args && !v6args && (split_errv4 || split_errv6)) {
-		printf ("-[ERR : No valid commands recieved]\n");
+		printf ("-[ERR : No valid commands received]\n");
 		free_boxargs (abox_start);
 		return -1;
 	}
